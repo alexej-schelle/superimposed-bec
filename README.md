@@ -35,7 +35,7 @@ python bec_symmytry_breaking.py
 
 using Python Version 2 or Version 3 (for Version 3, some parts in the code must be changed).
 
-The source code is granted with MIT LICENSE (Copyright, 2017) :
+The source code is granted with MIT LICENSE (Copyright, 2022) :
 
 -1- :
 
