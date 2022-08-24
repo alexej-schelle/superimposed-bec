@@ -1,6 +1,6 @@
 # superimposed-quantum-fields
 
-The routine superimposed-quantum-fields.py is a Markov sampling method, more specific, a (generalised) Metropolis sampling algorithm for calculating the integrated (random) superimposed condensate and non-condensate wave fields (order parameters) for a given total particle number, temperature and trap frequency of a Bose-Einstein condensate.
+The routine superimposed-bec.py is a Markov sampling method, more specific, a (generalised) Metropolis sampling algorithm for calculating the integrated (random) superimposed condensate and non-condensate wave fields (order parameters) for a given total particle number, temperature and trap frequency of a Bose-Einstein condensate.
 
 For proper installation, please replace the path /your-installation-path/ with your installation path in the lines ... of this code.
 
@@ -9,13 +9,13 @@ This software version corresponds to the publication Fluctuation and Noise Lette
 The Python routine superimposed-quantum-fields.py is compatible with Python 2 or Python 3 (for Version 3, some parts have to be changed) 
 and calculates :
 
-- Condensate field modes
-- Condensate wave fields at equilibrium (symmetry aspects)
-- Condensate wave field propagations (from low energy to high energy)
-- Partial phase distributions of real valued field modes
-- Partial phase distributions of imaginary valued field modes
-- Total phases of the condensate wave field
-- Chemical potentials of the condensate
+- Superimposed field modes
+- Superimposed wave fields at equilibrium (symmetry aspects)
+- Superimposed wave field propagations (from low energy to high energy)
+- Superimposed partial phase distributions of real valued field modes
+- Superimposed partial phase distributions of imaginary valued field modes
+- Superimposed total phases of the quantum field
+- Superimposed chemical potentials of the quantum field
 
 In order to start bec_symmytry_breaking.py, please specify BEC parameters :
 
