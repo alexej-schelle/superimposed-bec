@@ -1,23 +1,15 @@
 # superimposed-quantum-fields
 
-The routine superimposed-bec.py is a Markov sampling method, more specific, a (generalised) Metropolis sampling algorithm for calculating the integrated (random) superimposed condensate and non-condensate wave fields (order parameters) for a given total particle number, temperature and trap frequency of a Bose-Einstein condensate.
+The routine superimposed-bec.py is a Markov sampling method, more specific, a (generalised) Metropolis sampling algorithm for calculating the integrated (random) superimposed condensate and non-condensate wave fields (order parameters) for a given total particle number, temperature and trap frequency of a Bose-Einstein condensate, as it would correspond to a measurement of the two orthogonal quantum fields (condensate and non-condensate).
 
 For proper installation, please replace the path /your-installation-path/ with your installation path in the lines ... of this code.
-
-This software version corresponds to the publication Fluctuation and Noise Letters, Vol. 16, No. 01, 1750009 (2017).
 
 The Python routine superimposed-quantum-fields.py is compatible with Python 2 or Python 3 (for Version 3, some parts have to be changed) 
 and calculates :
 
 - Superimposed field modes
-- Superimposed wave fields at equilibrium (symmetry aspects)
-- Superimposed wave field propagations (from low energy to high energy)
-- Superimposed partial phase distributions of real valued field modes
-- Superimposed partial phase distributions of imaginary valued field modes
-- Superimposed total phases of the quantum field
-- Superimposed chemical potentials of the quantum field
 
-In order to start bec_symmytry_breaking.py, please specify BEC parameters :
+In order to start superimposed-quantum-fields.py, please specify BEC parameters :
 
 maxmode # typical mode size for analysis : 50 - 500 modes #
 ptn # typical particle number : 10^3 - 10^5 #
@@ -31,7 +23,7 @@ start_temp # in units of nK #
 
 in the source code as required and run the simulation in the command line with the command
 
-python bec_symmytry_breaking.py
+python superimposed-quantum-fields.py
 
 using Python Version 2 or Version 3 (for Version 3, some parts in the code must be changed).
 
