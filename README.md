@@ -11,15 +11,15 @@ and calculates :
 
 In order to start superimposed-quantum-fields.py, please specify BEC parameters :
 
-maxmode # typical mode size for analysis : 50 - 500 modes #
-ptn # typical particle number : 10^3 - 10^5 #
-sample # Typical sample size : 10^5 - 10^8 #
+maxmode # typical mode size for analysis : 50 - 500 modes # <br>
+ptn # typical particle number : 10^3 - 10^5 # <br>
+sample # Typical sample size : 10^5 - 10^8 # <br>
 
-omx # trap frequency in x direction #
-omy # trap frequency in y direction #
-omz # trap frequency in z direction #
+omx # trap frequency in x direction # <br>
+omy # trap frequency in y direction # <br>
+omz # trap frequency in z direction # <br>
 
-start_temp # in units of nK #
+start_temp # in units of nK # <br>
 
 in the source code as required and run the simulation in the command line with the command
 
