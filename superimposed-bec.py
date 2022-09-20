@@ -5,25 +5,14 @@
 #
 #
 ############################################################################################################################################################################
-#                                                                                                                                              
-#																										  
-#
+#                                                                                                                                              																										  
 #   Markov sampling method (generalised Metropolis-Hastings sampling algorithm) for calculating the
 #   integrated (random) condensate wave field (order parameter) for a given total particle number, 
 #   temperature and trap frequency of a Bose-Einstein condensate.
 #
-#   This software version corresponds to publication of Fluctuation and Noise Letters, Vol. 16, No. 01, 1750009 (2017).
-#  
 #   The Python routine bec_symmytry_breaking.py calculates :
 #
-#   1. Condensate field modes   	    	            	    	            	    	        
-#   2. Condensate wave fields at equilibrium (symmetry aspects)    
-#   3. Condensate wave field propagations (from low energy to high energy)    
-#   4. Partial phase distributions of real valued field modes    
-#   5. Partial phase distributions of imaginary valued field modes    
-#   6. Total phases of the condensate wave field
-#   7. Chemical potentials of the condensate 
-#
+#   - Superimposed Wave Fields
 # 
 #   For proper installation, please replace the path /your-installation-path/ with your installation path in the lines 235 - 316 of this code.
 #
@@ -100,20 +89,6 @@ y = ['']*ptn
 mu_x = [] # collect the real part of the integrated wave field
 mu_y = [] # collect the imaginary part of the integrated wave field
 
-mu_x_collect = [] # collect the real part of the integrated wave field
-mu_y_collect = [] # collect the imaginary part of the integrated wave field
-
-mu_x_prop_collect = [] # collect the real part of the integrated wave field
-mu_y_prop_collect = [] # collect the imaginary part of the integrated wave field
-
-phase_collect = [] # collect the phase of the integrated wave field
-
-mu_chemical_x = [] # collect the chemical potential of the condensate field
-mu_chemical_y = [] # collect the chemical potential of the condensate field
-
-mu_pols_x = [] # collect the real part of the fugacity of the condensate field
-mu_pols_y = [] # collect the imaginary part of the fugacity of the condensate field
-
 for l in range(1, sample):
           
     drop = 1
@@ -184,16 +159,6 @@ for l in range(1, sample):
                 phase_0 = -0.5*math.pi
         	       
             mu += x[k]*p[k] # Random amplitudes times phases
-            mu_k = x[k]*p[k] # Condensate field modes
-
-            mu_x_prop_collect.append(1.0*mu.real) # Collect condensate field propogation in ascending mode direction
-            mu_y_prop_collect.append(1.0*mu.imag) # Collect condensate field propagation in ascending mode direction
-    	
-            mu_x_collect.append(1.0*mu_k.real) # Collect condensate field modes in x direction
-            mu_y_collect.append(1.0*mu_k.imag) # Collect condensate field modes in y direction
-    	
-            mu_chemical_x.append(x[k].real/0.5/(omx+omy+omz)) # Collect condensate chemical potential - real parts
-            mu_chemical_y.append(x[k].imag/0.5/(omx+omy+omz)) # Collect condensate chemical potential - imaginary parts
         
             if operator.ne(phase_0,0.0):
     	
@@ -218,42 +183,24 @@ for l in range(1, sample):
         if (operator.gt(mu.real,0.0)): # First quarter plane
             
             phase_0 = math.atan(mu.imag/mu.real) + math.pi
-            phase_collect.append(phase_0/math.pi)
         			
         if (operator.iand(operator.lt(mu.real,0.0),operator.ge(mu.imag,0.0))): # Second quarter plane
             
     	    phase_0 = math.atan(mu.imag/mu.real) + math.pi + math.pi
-    	    phase_collect.append(phase_0/math.pi)
     
         if (operator.iand(operator.lt(mu.real,0.0),operator.lt(mu.imag,0.0))): # Third quarter plane
 	            
             phase_0 = math.atan(mu.imag/mu.real) - math.pi + math.pi
-            phase_collect.append(phase_0/math.pi)
     
         if (operator.iand(operator.eq(mu.real,0.0),operator.gt(mu.imag,0.0))): # Fourth quarter plane
             
             phase_0 = 0.5*math.pi + math.pi
-            phase_collect.append(phase_0/math.pi)
 
         if (operator.iand(operator.eq(mu.real,0.0),operator.lt(mu.imag,0.0))): # Fifth quartr plane
             
             phase_0 = -0.5*math.pi + math.pi
-            phase_collect.append(phase_0/math.pi)
     	    	        
-# Plot condensate field modes   	    	            	    	            	    	        
-
-# plt.figure(1)
-# Create a figure and set of subplots
-# fig, ax = plt.subplots()
-
-# Plot the x and y data points with color
-# pltax.scatter(mu_pols_x, mu_pols_y, color='black', lw=1)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$Re(\Psi_0)$', fontsize = 18)
-# plt.ylabel('$Im(\Psi_0)$', fontsize = 18)
-# plt.savefig('/Users/dr.a.schelle/Desktop/superimposed-bec/fig_1.png')
-
-# Plot condensate wave field at equilibrium    
+# Plot superimposed wave fields at equilibrium    
 
 plt.figure(1)
 plt.hist2d(mu_x, mu_y, bins = 1000, normed = True)
@@ -263,55 +210,3 @@ plt.ylabel('$Im(\Psi_0)$', fontsize = 18)
 cbar = plt.colorbar()
 cbar.ax.set_ylabel('$\pi_e[Re(\Psi_0),Im(\Psi_0))]$')
 plt.savefig('/Users/dr.a.schelle/Desktop/superimposed-bec/fig_1.png')
-
-# Plot non-condensate wave field propagation    
-
-# plt.figure(3)
-# plt.hist2d(mu_x_prop_collect, mu_y_prop_collect, bins = 1000, normed = True)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$Re(\Psi_0)$', fontsize = 18)
-# plt.ylabel('$Im(\Psi_0)$', fontsize = 18)
-# cbar = plt.colorbar()
-# cbar.ax.set_ylabel('$\pi_e[Re(\Psi_0),Im(\Psi_0))]$')
-# plt.savefig('/Users/AS_Scientific_Analytics/Desktop/pub_bec_methods/bec_symmetry_breaking/fig_3.png')
-
-# Plot phase distribution    
-
-# plt.figure(4)
-# plt.hist(mu_x, bins = 1000, normed = True)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$Re(\Psi_0)$', fontsize = 18)
-# plt.ylabel('$\pi_e[Re(\Psi_0)]$', fontsize = 18)
-# plt.xlim([-1.00, 1.00])
-# plt.savefig('/Users/AS_Scientific_Analytics/Desktop/pub_bec_methods/bec_symmetry_breaking/fig_4.png')
-
-# Plot phase distribution    
-
-# plt.figure(5)
-# plt.hist(mu_y, bins = 300, normed = True)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$Im(\Psi_0)$', fontsize = 18)
-# plt.ylabel('$\pi_e[Im(\Psi_0)]$', fontsize = 18)
-# plt.xlim([-1.00, 1.00])
-# plt.savefig('/Users/AS_Scientific_Analytics/Desktop/pub_bec_methods/bec_symmetry_breaking/fig_5.png')
-
-# Plot phase of wave field
-
-# plt.figure(6)
-# plt.hist2d(phase_collect, phase_collect, bins = 1000, normed = True)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$\phi_0$', fontsize = 18)
-# plt.ylabel('$\pi_e(\phi_0)$', fontsize = 18)
-# plt.xlim([0.00, 2.00])
-# plt.ylim([0.00, 2.00])
-# cbar.ax.set_ylabel('$\pi_p[\phi_0] [\pi]$')
-# plt.savefig('/Users/AS_Scientific_Analytics/Desktop/pub_bec_methods/bec_symmetry_breaking/fig_6.png')
-
-# Chemical potential of the condensate
-
-# plt.figure(7)
-# plt.hist(mu_chemical_x, bins = 1000, normed = True)
-# plt.tick_params(axis='both', which='major', labelsize = 16)
-# plt.xlabel('$\tau [ns]$', fontsize = 18)
-# plt.ylabel('$Re(\mu_0)$', fontsize = 18)
-# plt.savefig('/Users/dr.a.schelle/Desktop/coherence_time_publication/pub_bec_coherence_time/bec_symmetry_breaking/fig_7.png')
