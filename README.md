@@ -45,4 +45,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -3- : Free support is provided per email at support@krealix.de.
 
--4- : For more explicit consulting and discussions, please schedule a meeting at https://calendly.com/alexej-schelle/. 
+-4- : For more explicit consulting and discussions, please schedule a meeting at https://calendly.com/alexej-schelle/.
